@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router";
 import { FaBoxOpen } from "react-icons/fa";
-
+import { AuthContext } from "../../../Context/AuthContext";
 const AddExport = () => {
+  
+const { user } = use(AuthContext);
+
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
@@ -27,13 +30,14 @@ const AddExport = () => {
     e.preventDefault();
 
     // Convert numeric values properly
-    const productData = {
-      ...formData,
-      price: parseFloat(formData.price),
-      rating: parseFloat(formData.rating),
-      available_quantity: parseInt(formData.available_quantity),
-      createdAt: new Date(),
-    };
+   const productData = {
+    ...formData,
+    email: user?.email, // 👈 add logged-in user's email here
+    price: parseFloat(formData.price),
+    rating: parseFloat(formData.rating),
+    available_quantity: parseInt(formData.available_quantity),
+    createdAt: new Date(),
+  };
 
     fetch("http://localhost:3000/products", {
       method: "POST",
