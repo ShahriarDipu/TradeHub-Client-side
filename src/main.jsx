@@ -13,6 +13,7 @@ import { MyExports } from './assets/Component/MyExports/MyExports.jsx';
 import { MyImports } from './assets/Component/MyImports/MyImports.jsx';
 import PrivateRoute from './assets/Route/PrivateRoute.jsx';
 import ProductDetails from './assets/Component/ProductDetails/ProductDetails.jsx';
+import AddExport from './assets/Component/AddExports/AddExport.jsx';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "products/:id", 
         Component:ProductDetails,
+      },
+      {
+        path:"AddExports",
+        Component:AddExport
       }
   
      ]

@@ -17,9 +17,10 @@ const Navbar = () => {
   
 {
   user && <>
+       <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-gray-700 hover:bg-orange-50 hover:text-orange-600'><NavLink to="AddExports"> Add Export</NavLink></li>
       <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-gray-700 hover:bg-orange-50 hover:text-orange-600'><NavLink to="MyExports">My Exports</NavLink></li>
-    <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-gray-700 hover:bg-orange-50 hover:text-orange-600'><NavLink to="MyImports">My Imports</NavLink></li>
-    
+
+       <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-gray-700 hover:bg-orange-50 hover:text-orange-600'><NavLink to="MyImports">My Imports</NavLink></li>
     
     </>
 }
