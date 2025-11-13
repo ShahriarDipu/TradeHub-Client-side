@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, {use, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { FaStar, FaMapMarkerAlt, FaBoxOpen, FaArrowLeft } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
+import { AuthContext } from "../../../Context/AuthContext";
 
 const ProductDetails = () => {
+    const {user}=use(AuthContext);
   const { id } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
@@ -34,6 +36,7 @@ const ProductDetails = () => {
       quantity,
       totalPrice: price * quantity,
       date: new Date(),
+       email: user?.email,
     };
 
     fetch("http://localhost:3000/imports", {
