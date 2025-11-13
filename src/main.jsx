@@ -16,6 +16,7 @@ import ProductDetails from './assets/Component/ProductDetails/ProductDetails.jsx
 import AddExport from './assets/Component/AddExports/AddExport.jsx';
 import { ThemeProvider } from 'next-themes'
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -46,12 +47,13 @@ const router = createBrowserRouter([
       },
       {
         path: "products/:id", 
-        Component:ProductDetails,
+        element:<PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
       },
       {
         path:"AddExports",
         Component:AddExport
-      }
+      },
+      
   
      ]
   },

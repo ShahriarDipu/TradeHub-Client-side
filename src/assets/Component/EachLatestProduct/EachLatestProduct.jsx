@@ -2,9 +2,11 @@ import React from 'react'
 import { FaBoxOpen } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { NavLink } from 'react-router';
+
 export const EachLatestProduct = ({eachLatestProduct}) => {
 
-    const {title,available_quantity,origin_country,rating,price,image}=eachLatestProduct;
+    const {_id,title,available_quantity,origin_country,rating,price,image}=eachLatestProduct;
 
  
   return (
@@ -44,13 +46,14 @@ export const EachLatestProduct = ({eachLatestProduct}) => {
         <div className="flex items-center justify-between mt-3">
           <p className="text-xl font-bold text-orange-600">${price}</p>
 
-        <button
-         // to={`/product/${_id}`}
+      
+         <NavLink
+  to={`/products/${_id}`}
   className="bg-gradient-to-r from-orange-400 to-orange-600 text-white text-sm font-medium px-4 py-2 rounded-lg shadow 
              transition-all duration-300 bg-[length:200%_200%] bg-left hover:bg-right"
 >
   See Details
-</button>
+</NavLink>
 
         </div>
       </div>

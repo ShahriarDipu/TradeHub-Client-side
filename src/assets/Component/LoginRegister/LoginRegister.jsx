@@ -20,7 +20,7 @@ export const LoginRegister = () => {
     signInUser(email, password)
       .then((result) => {
         toast.success("Login Successful!");
-        navigate(location.state || "/");
+        navigate(location?.state || "/");
       })
       .catch((error) => {
         toast.error(error.message);
@@ -35,7 +35,7 @@ export const LoginRegister = () => {
     signInWithGoogle()
       .then((result) => {
         toast.success("Logged in with Google!");
-        navigate(location.state || "/");
+        navigate(location?.state || "/");
       })
       .catch((error) => {
         toast.error(error.message);
