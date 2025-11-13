@@ -1,75 +1,99 @@
-import React, { use, useState } from 'react'
-import { Link, useLoaderData, useLocation, useNavigate, useNavigation } from 'react-router'
-import { AuthContext } from '../../../Context/AuthContext';
+import React, { useState, useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
+import { AuthContext } from "../../../Context/AuthContext";
+import toast from "react-hot-toast";
+
 export const LoginRegister = () => {
+  const { signInWithGoogle, createUser, signInUser,signOutWithGoogle } = useContext(AuthContext);
 
+  const location = useLocation();
+  const navigate = useNavigate();
 
-const {signInWithGoogle,createUser, signInUser}=use(AuthContext)
+  const [activeTab, setActiveTab] = useState("login");
 
-
-  const location=useLocation();
-  const navigate = useNavigate()
-console.log(location)
-
-  const [activeTab, setActiveTab] = useState("login"); // 'login' or 'register'
-
-
-   const handleLogin=(e)=>{
+  // -------------------------- LOGIN --------------------------
+  const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
-     const password=e.target.password.value
-   signInUser(email,password)
-   .then(result=>{
-    console.log(result)
-    navigate(location.state|| '/')
-   })
-   .catch(error=>{
-    console.log(error)
-   })
+    const password = e.target.password.value;
 
-   }
+    signInUser(email, password)
+      .then((result) => {
+        toast.success("Login Successful!");
+        navigate(location.state || "/");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+        console.log(error);
+      });
+  };
 
-
+  // ------------------------- GOOGLE LOGIN ----------------------
   const handleWithGoogle = (e) => {
     e.preventDefault();
 
-     signInWithGoogle()
-     .then(result=>{
-        console.log(result)
-        navigate(location.state|| '/')
-     })
-     .catch(error=>{
-        console.log(error)
-     })
+    signInWithGoogle()
+      .then((result) => {
+        toast.success("Logged in with Google!");
+        navigate(location.state || "/");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+        console.log(error);
+      });
   };
 
-
-
+  // ------------------------ REGISTER ---------------------------
   const handleRegister = (e) => {
     e.preventDefault();
-     const name = e.target.name.value;
-     const email = e.target.email.value;
-     const password=e.target.password.value
-     const photoUrl = e.target.photoURL.value
+   
 
-  const newUser ={name, email, password, photoUrl}
-  console.log(newUser)
-    createUser(email,password)
-    .then(result=>{
-        console.log(result)
-    })
-    .catch(error=>{
-        console.log(error)
-    })
+
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const photoUrl = e.target.photoURL.value;
+
+    // ---------------- Password Validation ----------------
+    if (password.length < 6) {
+      return toast.error("Password must be at least 6 characters long!");
+    }
+
+    if (!/[A-Z]/.test(password)) {
+      return toast.error("Password must contain at least one uppercase letter!");
+    }
+
+    if (!/[a-z]/.test(password)) {
+      return toast.error("Password must contain at least one lowercase letter!");
+    }
+
+    // ---------------- Create User ----------------
+    createUser(email, password)
+      .then((result) => {
+        toast.success("Registration Successful!");
+        console.log(result);
+         e.target.reset();
+          // ❗ DO NOT KEEP USER LOGGED IN
+      signOutWithGoogle()
+
+      // Optional: Switch tab to Login
+      setActiveTab("login");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+        console.log(error);
+      });
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen ">
-      <div className="shadow-2xl  p-8 rounded-2xl shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-semibold text-center mb-2 text-2xl font-bold bg-gradient-to-r from-orange-500 to-red-400 bg-clip-text text-transparent hidden sm:block">
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="shadow-2xl p-8 rounded-2xl w-full max-w-md bg-white dark:bg-gray-900 dark:text-gray-100">
+        
+        {/* Title */}
+        <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-red-400 bg-clip-text text-transparent text-center mb-2">
           Welcome to TradeHub
         </h1>
-        <p className="text-center text-xl mb-4 font-normal  text-gray-500">
+        <p className="text-center text-gray-500 dark:text-gray-300 mb-4">
           Login or create an account to continue
         </p>
 
@@ -80,46 +104,44 @@ console.log(location)
             className={`flex-1 py-2 rounded-l-lg ${
               activeTab === "login"
                 ? "bg-orange-100 text-orange-700 font-semibold"
-                : "bg-gray-100 text-gray-500"
+                : "bg-gray-100 dark:bg-gray-800 dark:text-gray-300"
             }`}
           >
             Login
           </button>
+
           <button
             onClick={() => setActiveTab("register")}
             className={`flex-1 py-2 rounded-r-lg ${
               activeTab === "register"
                 ? "bg-orange-100 text-orange-700 font-semibold"
-                : "bg-gray-100 text-gray-500"
+                : "bg-gray-100 dark:bg-gray-800 dark:text-gray-300"
             }`}
           >
             Register
           </button>
         </div>
 
-        {/* Login Form */}
+        {/* -------------------- LOGIN FORM --------------------- */}
         {activeTab === "login" && (
           <form onSubmit={handleLogin}>
             <div className="mb-4">
               <label className="block mb-1 font-medium">Email</label>
               <input
-
-              name="email"
+                name="email"
                 type="email"
                 placeholder="your@email.com"
-                className="w-full border rounded-md px-3 py-2"
-               
+                className="w-full border rounded-md px-3 py-2 dark:bg-gray-800 dark:border-gray-700"
               />
             </div>
 
             <div className="mb-4">
               <label className="block mb-1 font-medium">Password</label>
               <input
-                name='password'
+                name="password"
                 type="password"
                 placeholder="•••••••"
-                className="w-full border rounded-md px-3 py-2"
-              
+                className="w-full border rounded-md px-3 py-2 dark:bg-gray-800 dark:border-gray-700"
               />
             </div>
 
@@ -129,47 +151,32 @@ console.log(location)
             >
               Login
             </button>
-           <div className='py-3 text-blue-600'><a href="#">Forgot Password ?</a></div>
+
+            <div className="py-3 text-blue-600"><a href="#">Forgot Password ?</a></div>
+
             <div className="flex items-center my-6">
-              <hr className="flex-grow border-gray-300" />
+              <hr className="flex-grow border-gray-300 dark:border-gray-700" />
               <span className="px-2 text-gray-400 text-sm">OR CONTINUE WITH</span>
-              <hr className="flex-grow border-gray-300" />
+              <hr className="flex-grow border-gray-300 dark:border-gray-700" />
             </div>
 
             <button
-             onClick={handleWithGoogle}
-              type="submit"
-              className="w-full flex items-center justify-center border border-gray-300 py-2 rounded-md hover:bg-gray-50"
+              onClick={handleWithGoogle}
+              type="button"
+              className="w-full flex items-center justify-center border border-gray-300 dark:border-gray-700 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 transition"
             >
-             <svg
-                className="w-4 h-4 mr-2"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <path
-                  fill="#EA4335"
-                  d="M153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
-                ></path>
-                <path
-                  fill="#34A853"
-                  d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
-                ></path>
-                <path
-                  fill="#4285F4"
-                  d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
-                ></path>
-                <path
-                  fill="#FBBC05"
-                  d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
-                ></path>
+              <svg className="w-4 h-4 mr-2" viewBox="0 0 512 512">
+                <path fill="#EA4335" d="M153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"></path>
+                <path fill="#34A853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path>
+                <path fill="#4285F4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path>
+                <path fill="#FBBC05" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path>
               </svg>
-            
               Google
             </button>
           </form>
         )}
 
-        {/* Register Form */}
+        {/* ------------------ REGISTER FORM -------------------- */}
         {activeTab === "register" && (
           <form onSubmit={handleRegister}>
             <div className="mb-4">
@@ -178,8 +185,7 @@ console.log(location)
                 name="name"
                 type="text"
                 placeholder="John Doe"
-                className="w-full border rounded-md px-3 py-2"
-              
+                className="w-full border rounded-md px-3 py-2 dark:bg-gray-800 dark:border-gray-700"
               />
             </div>
 
@@ -189,8 +195,7 @@ console.log(location)
                 name="email"
                 type="email"
                 placeholder="your@email.com"
-                className="w-full border rounded-md px-3 py-2"
-           
+                className="w-full border rounded-md px-3 py-2 dark:bg-gray-800 dark:border-gray-700"
               />
             </div>
 
@@ -200,22 +205,22 @@ console.log(location)
                 name="photoURL"
                 type="url"
                 placeholder="https://example.com/photo.jpg"
-                className="w-full border rounded-md px-3 py-2"
+                className="w-full border rounded-md px-3 py-2 dark:bg-gray-800 dark:border-gray-700"
               />
             </div>
 
+            {/* Password field with requirement text */}
             <div className="mb-4">
               <label className="block mb-1 font-medium">Password</label>
               <input
-
                 name="password"
                 type="password"
                 placeholder="•••••••"
-                className="w-full border rounded-md px-3 py-2"
-             
+                className="w-full border rounded-md px-3 py-2 dark:bg-gray-800 dark:border-gray-700"
               />
-              <p className="text-gray-400 text-xs mt-1">
-                Must be at least 6 characters 
+
+              <p className="text-xs text-red-500 mt-1">
+                Must contain at least 6 characters, 1 uppercase & 1 lowercase letter.
               </p>
             </div>
 
@@ -225,40 +230,25 @@ console.log(location)
             >
               Register
             </button>
-            <div className='py-3 text-blue-600'><a href="#">Forgot Password ?</a></div>
+
+            <div className="py-3 text-blue-600"><a href="#">Forgot Password ?</a></div>
 
             <div className="flex items-center my-6">
-              <hr className="flex-grow border-gray-300" />
+              <hr className="flex-grow border-gray-300 dark:border-gray-700" />
               <span className="px-2 text-gray-400 text-sm">OR CONTINUE WITH</span>
-              <hr className="flex-grow border-gray-300" />
+              <hr className="flex-grow border-gray-300 dark:border-gray-700" />
             </div>
 
-            <button onClick={handleWithGoogle}
-              type="submit" 
-              className="w-full flex items-center justify-center border border-gray-300 py-2 rounded-md hover:bg-gray-50"
+            <button
+              onClick={handleWithGoogle}
+              type="button"
+              className="w-full flex items-center justify-center border border-gray-300 dark:border-gray-700 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 transition"
             >
-    
-              <svg 
-                className="w-4 h-4 mr-2"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <path
-                  fill="#EA4335"
-                  d="M153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
-                ></path>
-                <path
-                  fill="#34A853"
-                  d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
-                ></path>
-                <path
-                  fill="#4285F4"
-                  d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
-                ></path>
-                <path
-                  fill="#FBBC05"
-                  d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
-                ></path>
+              <svg className="w-4 h-4 mr-2" viewBox="0 0 512 512">
+                <path fill="#EA4335" d="M153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"></path>
+                <path fill="#34A853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path>
+                <path fill="#4285F4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path>
+                <path fill="#FBBC05" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path>
               </svg>
               Google
             </button>
@@ -266,5 +256,5 @@ console.log(location)
         )}
       </div>
     </div>
-  )
-}
+  );
+};
