@@ -1,14 +1,36 @@
-import React, { use } from 'react'
+import React, { use, useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router'
 import { BsBoxSeam } from "react-icons/bs";
 import { LuLogOut } from "react-icons/lu";
 import { LuLogIn } from "react-icons/lu";
+
 import '../../../App.css';
 import { AuthContext } from '../../../Context/AuthContext';
 const Navbar = () => {
-
+ const [theme, setTheme]=useState(localStorage.getItem('theme')||"light")
 
   const{user,signOutWithGoogle,} =use(AuthContext)
+
+
+useEffect(()=>{
+  const html =document.querySelector('html')
+  html.setAttribute("data-theme", theme)
+  localStorage.setItem("theme",theme)
+},[theme])
+
+ const handleTheme=(checked)=>{
+// const html=document.querySelector('html')
+// if(checked){
+//   html.setAttribute("data-theme", "night")
+// }else{
+//   html.setAttribute("data-theme", "light")
+// }
+setTheme(checked? "night":"light")
+ }
+
+
+
+
 
 
  const links = <div className='flex flex-col md:flex-row gap-2 text-lg'>
@@ -38,6 +60,14 @@ const handleSignOut=()=>{
 }
   return (
     <div>
+
+<input
+onChange={(e)=>handleTheme(e.target.checked)}
+type="checkbox"
+defaultChecked={localStorage.getItem('theme')==="night"}
+className="toggle"
+/>
+
 
 
         <div className="navbar bg-base-100 shadow-sm">
@@ -105,6 +135,7 @@ const handleSignOut=()=>{
   </div>
 </div>
     </div>
+
   )
 }
 

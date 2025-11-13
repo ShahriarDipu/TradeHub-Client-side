@@ -24,7 +24,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-orange-50 to-white">
+    <section className=" py-20 ">
       <div className="max-w-6xl mx-auto px-4 text-center">
         <h2 className="text-3xl font-bold text-gray-900 mb-2">How It Works</h2>
         <p className="text-gray-500 mb-12">
@@ -35,7 +35,7 @@ const HowItWorks = () => {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="group relative bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300"
+              className="group relative rounded-2xl p-8 shadow-2xl hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300"
             >
               <h1 className="text-6xl font-extrabold text-orange-100 mb-4">
                 {step.number}

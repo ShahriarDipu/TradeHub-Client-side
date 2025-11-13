@@ -88,16 +88,16 @@ export const MyExports = () => {
       {exports.length === 0 ? (
         <p className="text-center text-gray-500">You haven't added any products yet.</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-15 w-15/17 mx-auto">
           {exports.map((item) => (
             <div
               key={item._id}
-              className="bg-white rounded-2xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+              className="rounded-2xl shadow-2xl hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden"
             >
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-full h-56 object-cover"
+                className="w-full h-80 object-cover"
               />
 
               <div className="p-4">

@@ -34,22 +34,22 @@ export const MyImports = () => {
   };
 
   return (
-    <div className="p-6 min-h-screen bg-gradient-to-b from-orange-50 to-white">
+    <div className="p-6 min-h-screen ">
       <h1 className="text-2xl font-bold mb-8 text-center">My Imported Products</h1>
 
    
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-15/17 mx-auto">
         {imports.map((item) => (
           <div
             key={item._id}
-            className="bg-white rounded-2xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+            className=" rounded-2xl shadow-2xl hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden"
           >
      
             <div className="relative">
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-full h-56 object-cover"
+                className="w-full h-90 object-cover"
               />
 
               <span className="absolute top-3 left-3 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">

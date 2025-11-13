@@ -26,7 +26,7 @@ const WhyChoose = () => {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-orange-50 to-white">
+    <section className="py-16  ">
       <div className="w-15/17 mx-auto text-center px-4">
         <h2 className="text-3xl font-bold mb-2">Why Choose TradeHub?</h2>
         <p className="text-gray-500 mb-10">
@@ -38,7 +38,7 @@ const WhyChoose = () => {
           {features.map((f, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl p-6 py-15 shadow-md transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              className="group  rounded-2xl p-6 py-15 shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
             >
               <div className="flex justify-start mb-4">
                 <div className="bg-gray-50 p-4  rounded-xl shadow-sm mr-4 transform transition-transform duration-300 group-hover:scale-125">

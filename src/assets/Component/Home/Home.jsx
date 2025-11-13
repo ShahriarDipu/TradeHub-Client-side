@@ -9,6 +9,7 @@ import Footer from '../Pages/Footer/Footer'
 const latestProductsPromise =fetch('http://localhost:3000/latest-products')
 .then(result=>result.json())
 export const Home = () => {
+
   return (
     <div>
   <Banner></Banner>
@@ -17,7 +18,7 @@ export const Home = () => {
   </LatestProducts >
   <WhyChoose></WhyChoose>
   <HowItWorks></HowItWorks>
-  <Footer></Footer>
+
   </div>
   )
 }

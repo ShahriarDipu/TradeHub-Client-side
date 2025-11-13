@@ -14,6 +14,7 @@ import { MyImports } from './assets/Component/MyImports/MyImports.jsx';
 import PrivateRoute from './assets/Route/PrivateRoute.jsx';
 import ProductDetails from './assets/Component/ProductDetails/ProductDetails.jsx';
 import AddExport from './assets/Component/AddExports/AddExport.jsx';
+import { ThemeProvider } from 'next-themes'
 
 const router = createBrowserRouter([
   {
@@ -59,8 +60,12 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
    <AuthProvider>
+
       <RouterProvider router={router} />
+    
        <Toaster position="top-right" reverseOrder={false} />
+     
     </AuthProvider>
+    
   </StrictMode>
 )

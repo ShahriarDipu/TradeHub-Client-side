@@ -64,8 +64,8 @@ console.log(location)
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-md">
+    <div className="flex items-center justify-center min-h-screen ">
+      <div className="shadow-2xl  p-8 rounded-2xl shadow-md w-full max-w-md">
         <h1 className="text-2xl font-semibold text-center mb-2 text-2xl font-bold bg-gradient-to-r from-orange-500 to-red-400 bg-clip-text text-transparent hidden sm:block">
           Welcome to TradeHub
         </h1>
@@ -129,7 +129,7 @@ console.log(location)
             >
               Login
             </button>
-
+           <div className='py-3 text-blue-600'><a href="#">Forgot Password ?</a></div>
             <div className="flex items-center my-6">
               <hr className="flex-grow border-gray-300" />
               <span className="px-2 text-gray-400 text-sm">OR CONTINUE WITH</span>
@@ -225,6 +225,7 @@ console.log(location)
             >
               Register
             </button>
+            <div className='py-3 text-blue-600'><a href="#">Forgot Password ?</a></div>
 
             <div className="flex items-center my-6">
               <hr className="flex-grow border-gray-300" />
@@ -236,6 +237,7 @@ console.log(location)
               type="submit" 
               className="w-full flex items-center justify-center border border-gray-300 py-2 rounded-md hover:bg-gray-50"
             >
+    
               <svg 
                 className="w-4 h-4 mr-2"
                 xmlns="http://www.w3.org/2000/svg"

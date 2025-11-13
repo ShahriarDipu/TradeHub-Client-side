@@ -10,13 +10,13 @@ export const Products = ({Products}) => {
    
     
   return (
-   <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+   <div className=" rounded-2xl shadow-2xl hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden">
       
         <div className="relative">
           <img
             src={image}
             alt={title}
-            className="w-full h-60 object-cover"
+            className="w-full h-90 object-cover"
           />
   
      

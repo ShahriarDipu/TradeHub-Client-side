@@ -56,8 +56,8 @@ const { user } = use(AuthContext);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white flex flex-col items-center py-10 px-4">
-      <div className="max-w-3xl w-full bg-white shadow-xl rounded-2xl p-8">
+    <div className="min-h-screen bg-gradient-to-b flex flex-col items-center py-10 px-4">
+      <div className="max-w-3xl w-full  shadow-2xl rounded-2xl p-8">
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
           <FaBoxOpen className="text-orange-500 text-3xl" />

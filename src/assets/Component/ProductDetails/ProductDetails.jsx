@@ -59,7 +59,7 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white flex flex-col items-center px-4 py-10">
+    <div className="min-h-screen  flex flex-col items-center px-4 py-10">
       <div className="w-full max-w-6xl mb-6">
         <button
           onClick={() => navigate(-1)}
@@ -69,7 +69,7 @@ const ProductDetails = () => {
         </button>
       </div>
 
-      <div className="max-w-6xl w-full bg-white/70 backdrop-blur-sm rounded-3xl shadow-lg grid grid-cols-1 md:grid-cols-2 gap-10 p-8 md:p-10">
+      <div className="max-w-6xl w-full  backdrop-blur-sm rounded-3xl shadow-lg grid grid-cols-1 md:grid-cols-2 gap-10 p-8 md:p-10">
         {/* Image */}
         <div className="relative">
           <img
@@ -128,6 +128,9 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
+
+
+
 
       {/* ✅ Import Modal */}
       {showModal && (
@@ -195,3 +198,4 @@ const ProductDetails = () => {
 
 export default ProductDetails;
 
+   
