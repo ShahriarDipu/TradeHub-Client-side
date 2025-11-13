@@ -29,7 +29,7 @@ const { user } = use(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Convert numeric values properly
+ 
    const productData = {
     ...formData,
     email: user?.email, // 👈 add logged-in user's email here
