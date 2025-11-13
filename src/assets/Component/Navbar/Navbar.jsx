@@ -33,7 +33,7 @@ setTheme(checked? "night":"light")
 
 
 
- const links = <div className='flex flex-col md:flex-row gap-2 text-lg'>
+ const links = <div className='flex flex-col md:flex-row gap-2 text-lg '>
 <li 
 className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base-content hover:bg-orange-50 hover:text-orange-600'> <NavLink to="/">Home</NavLink></li> 
  <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base-content hover:bg-orange-50 hover:text-orange-600'><NavLink to="AllProducts">All Products</NavLink></li> 
@@ -60,13 +60,13 @@ const handleSignOut=()=>{
    })
 }
   return (
-    <div>
+    <div className='w-full sm:w-15/17 mx-auto'>
 
 
 
 
 
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar bg-base-100 z-30">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

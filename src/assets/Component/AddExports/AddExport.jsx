@@ -61,7 +61,7 @@ const { user } = use(AuthContext);
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
           <FaBoxOpen className="text-orange-500 text-3xl" />
-          <div>
+          <div >
             <h1 className="text-2xl font-bold">Add Export Product</h1>
             <p className="text-gray-500 text-sm">
               List a new product for export
@@ -191,7 +191,7 @@ const { user } = use(AuthContext);
             <button
               type="button"
               onClick={() => navigate(-1)}
-              className="border px-5 py-2 rounded-lg text-gray-600 hover:bg-gray-100"
+              className="border px-5 py-2 rounded-lg text-base-content hover:bg-gray-100"
             >
               Cancel
             </button>

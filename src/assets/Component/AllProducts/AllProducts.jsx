@@ -37,11 +37,11 @@ console.log(allProducts)
 
 
   return (
-    <div className="p-6">
+    <div className="p-6 py-15">
       <h1 className="text-2xl font-bold mb-6  text-center">All Products</h1>
 
 
-      <div className="flex justify-center mb-8">
+      <div className="flex justify-center mb-15">
         <input
           type="text"
           placeholder="Search by product name or country..."

@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router'
 
 export const Banner = () => {
   return (
@@ -18,12 +19,12 @@ export const Banner = () => {
 
      
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center mb-8 sm:mb-10">
-          <a
+          <NavLink to="AllProducts"
             href="#"
             className=" w-5/12  mx-auto bg-white text-orange-600 font-semibold px-2 md:px-6 py-3 rounded-md hover:bg-orange-100 transition"
           >
             Browse Products →
-          </a>
+          </NavLink>
           
         </div>
 

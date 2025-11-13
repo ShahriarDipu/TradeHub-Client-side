@@ -1,5 +1,6 @@
 import React from "react";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 
 const Footer = () => {
@@ -23,7 +24,7 @@ const Footer = () => {
               <FaFacebookF />
             </a>
             <a href="#" className="bg-gray-700 hover:bg-orange-500 p-2 rounded-full transition">
-              <FaTwitter />
+              <FaXTwitter />
             </a>
             <a href="#" className="bg-gray-700 hover:bg-orange-500 p-2 rounded-full transition">
               <FaInstagram />

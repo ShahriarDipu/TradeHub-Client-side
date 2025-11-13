@@ -34,7 +34,7 @@ export const MyImports = () => {
   };
 
   return (
-    <div className="p-6 min-h-screen ">
+    <div className="p-6 min-h-screen pb-15">
       <h1 className="text-2xl font-bold mb-8 text-center">My Imported Products</h1>
 
    

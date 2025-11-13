@@ -10,8 +10,9 @@ export const EachLatestProduct = ({eachLatestProduct}) => {
 
  
   return (
+      <div >
     
-     <div className=" rounded-2xl shadow-2xl hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+     <div className=" rounded-2xl shadow-2xl hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden ">
       {/* Image Section */}
       <div className="relative">
         <img
@@ -57,6 +58,7 @@ export const EachLatestProduct = ({eachLatestProduct}) => {
 
         </div>
       </div>
+    </div>
     </div>
   )
 }
