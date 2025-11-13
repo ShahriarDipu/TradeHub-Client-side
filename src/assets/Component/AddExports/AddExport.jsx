@@ -39,7 +39,7 @@ const { user } = use(AuthContext);
     createdAt: new Date(),
   };
 
-    fetch("http://localhost:3000/products", {
+    fetch("https://assignment-10-server-six-ivory.vercel.app/products", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(productData),

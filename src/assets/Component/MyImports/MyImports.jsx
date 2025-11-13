@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { FaStar, FaMapMarkerAlt, FaTrashAlt } from "react-icons/fa";
 import toast from "react-hot-toast";
 
+
 export const MyImports = () => {
   const [imports, setImports] = useState([]);
   const [deleteId, setDeleteId] = useState(null); // for modal
@@ -10,7 +11,7 @@ export const MyImports = () => {
 
   //  Fetch ALL imports from database
   useEffect(() => {
-    fetch("http://localhost:3000/imports")
+    fetch("https://assignment-10-server-six-ivory.vercel.app/imports")
       .then((res) => res.json())
       .then((data) => setImports(data.reverse()))
       .catch((err) => console.error("Error fetching imports:", err));
@@ -18,7 +19,7 @@ export const MyImports = () => {
 
   // Handle delete confirm
   const handleConfirmDelete = () => {
-    fetch(`http://localhost:3000/imports/${deleteId}`, {
+    fetch(`https://assignment-10-server-six-ivory.vercel.app/imports/${deleteId}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

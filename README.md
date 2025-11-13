@@ -1,16 +1,45 @@
-# React + Vite
+# 🌐 TradeHub – Global Import & Export Marketplace
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **TradeHub**, a modern full-stack web application designed to simplify global import and export operations.  
+Users can manage export listings, import products, and track all activity through a clean and responsive dashboard.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔗 Live Website  
+https://shimmering-biscuit-97cef9.netlify.app
 
-## React Compiler
+## 🔗 Backend API  
+https://assignment-10-server-six-ivory.vercel.app
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🌍 **Browse thousands of import/export products** with advanced search and filtering  
+- 👤 **User authentication** powered by Firebase (Email/Password + Google Login)  
+- 📦 **Add, Edit, and Delete export products** with real-time updates  
+- 📥 **Import products** with automatic stock validation and quantity protection  
+- 📊 **Dashboard pages** for managing *My Exports* and *My Imports*  
+- ⚡ **Fully responsive UI** built using Tailwind CSS and DaisyUI  
+- ☁️ **Backend deployed on Vercel**, **frontend on Netlify**, and **database on MongoDB Atlas**  
+- 🔐 **Secure environment variables** and clean REST API architecture  
+
+---
+
+## 📁 Tech Stack
+
+**Frontend:** React, React Router, Tailwind CSS, DaisyUI  
+**Backend:** Node.js, Express.js, MongoDB Atlas  
+**Authentication:** Firebase Auth  
+**Deployment:** Netlify (Client), Vercel (Server)  
+
+---
+
+## 📬 Contact
+
+For any issues or improvements, feel free to create an issue or reach out directly.
+
+---
+
+### © 2025 TradeHub. Built with passion for global trade.
+

@@ -9,7 +9,7 @@ const [search, setSearch] = useState("");
 
 
 useEffect(() => {
-  fetch("http://localhost:3000/products")
+  fetch("https://assignment-10-server-six-ivory.vercel.app/products")
     .then((res) => {
       return res.json();
     })

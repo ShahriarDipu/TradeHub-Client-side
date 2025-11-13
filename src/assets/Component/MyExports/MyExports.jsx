@@ -13,7 +13,7 @@ export const MyExports = () => {
   const loadMyExports = () => {
     if (!user?.email) return;
 
-    fetch(`http://localhost:3000/products?email=${user.email}`)
+    fetch(`https://assignment-10-server-six-ivory.vercel.app/products?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setExports(data.reverse()))
       .catch((err) => console.error("Error loading exports:", err));
@@ -26,7 +26,7 @@ export const MyExports = () => {
   // ✅ Delete export
   const handleDelete = (id) => {
     if (window.confirm("❗Are you sure you want to delete this export?")) {
-      fetch(`http://localhost:3000/products/${id}`, {
+      fetch(`https://assignment-10-server-six-ivory.vercel.app/products/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -67,7 +67,7 @@ export const MyExports = () => {
       available_quantity: Number(formData.available_quantity),
     };
 
-    fetch(`http://localhost:3000/products/${editingProduct._id}`, {
+    fetch(`https://assignment-10-server-six-ivory.vercel.app/products/${editingProduct._id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(cleanedData),

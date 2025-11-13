@@ -13,7 +13,7 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/products/${id}`)
+    fetch(`https://assignment-10-server-six-ivory.vercel.app/products/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data))
       .catch((err) => console.error("Error fetching product:", err));
@@ -39,7 +39,7 @@ const ProductDetails = () => {
        email: user?.email,
     };
 
-    fetch("http://localhost:3000/imports", {
+    fetch("https://assignment-10-server-six-ivory.vercel.app/imports", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(importData),
@@ -47,7 +47,7 @@ const ProductDetails = () => {
       .then((res) => res.json())
       .then(() => {
         // reduce available quantity
-        fetch(`http://localhost:3000/products/${_id}`, {
+        fetch(`https://assignment-10-server-six-ivory.vercel.app/products/${id}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ quantity }),

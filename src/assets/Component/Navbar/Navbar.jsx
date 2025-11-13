@@ -75,7 +75,7 @@ const handleSignOut=()=>{
     </div>
     
       <li className="flex items-center gap-2 group ">
-                <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <div className="w-12 hidden md:block h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-lg">
                  <BsBoxSeam className='text-white text-2xl'/>
                 </div>
                 <div>   

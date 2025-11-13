@@ -6,7 +6,7 @@ import WhyChoose from '../Pages/WhyChoose/WhyChoose'
 import HowItWorks from '../Pages/HowItWorks/HowItWorks'
 import Footer from '../Pages/Footer/Footer'
 
-const latestProductsPromise =fetch('http://localhost:3000/latest-products')
+const latestProductsPromise =fetch('https://assignment-10-server-six-ivory.vercel.app/latest-products')
 .then(result=>result.json())
 export const Home = () => {
 
