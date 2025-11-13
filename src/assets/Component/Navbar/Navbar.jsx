@@ -10,7 +10,7 @@ const Navbar = () => {
  const [theme, setTheme]=useState(localStorage.getItem('theme')||"light")
 
   const{user,signOutWithGoogle,} =use(AuthContext)
-
+ console.log(user)
 
 useEffect(()=>{
   const html =document.querySelector('html')
@@ -19,12 +19,7 @@ useEffect(()=>{
 },[theme])
 
  const handleTheme=(checked)=>{
-// const html=document.querySelector('html')
-// if(checked){
-//   html.setAttribute("data-theme", "night")
-// }else{
-//   html.setAttribute("data-theme", "light")
-// }
+
 setTheme(checked? "night":"light")
  }
 

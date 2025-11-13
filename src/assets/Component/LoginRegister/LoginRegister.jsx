@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../../Context/AuthContext";
 import toast from "react-hot-toast";
+import { updateProfile } from "firebase/auth";
+
 
 export const LoginRegister = () => {
   const { signInWithGoogle, createUser, signInUser,signOutWithGoogle } = useContext(AuthContext);
@@ -20,7 +22,7 @@ export const LoginRegister = () => {
     signInUser(email, password)
       .then((result) => {
         toast.success("Login Successful!");
-        navigate(location?.state || "/");
+        navigate(location?.state?.from || "/");
       })
       .catch((error) => {
         toast.error(error.message);
@@ -35,7 +37,7 @@ export const LoginRegister = () => {
     signInWithGoogle()
       .then((result) => {
         toast.success("Logged in with Google!");
-        navigate(location?.state || "/");
+        navigate(location?.state?.from || "/");
       })
       .catch((error) => {
         toast.error(error.message);
@@ -52,7 +54,7 @@ export const LoginRegister = () => {
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const photoUrl = e.target.photoURL.value;
+    const photoURL = e.target.photoURL.value;
 
     // ---------------- Password Validation ----------------
     if (password.length < 6) {
@@ -68,12 +70,12 @@ export const LoginRegister = () => {
     }
 
     // ---------------- Create User ----------------
-    createUser(email, password)
+    createUser(email, password,name, photoURL)
       .then((result) => {
         toast.success("Registration Successful!");
         console.log(result);
          e.target.reset();
-          // ❗ DO NOT KEEP USER LOGGED IN
+      
       signOutWithGoogle()
 
       // Optional: Switch tab to Login

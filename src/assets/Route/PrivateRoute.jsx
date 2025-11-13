@@ -18,7 +18,9 @@ const PrivateRoute = ({ children }) => {
   }
 
   console.log("🚫 No user — redirecting to /Login");
-  return <Navigate state={location?.pathname} to="/LoginRegister" replace />;
+  // return <Navigate state={location?.pathname} to="/LoginRegister" replace />;
+  return <Navigate to="/LoginRegister" state={{ from: location.pathname }} replace />;
+
 };
 
 export default PrivateRoute;
