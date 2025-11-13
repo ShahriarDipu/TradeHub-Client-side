@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       },
       {
         path:"AddExports",
-        Component:AddExport
+        element:<PrivateRoute><AddExport></AddExport></PrivateRoute>
       },
       
   

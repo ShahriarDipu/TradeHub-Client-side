@@ -87,7 +87,7 @@ export const LoginRegister = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <div className="shadow-2xl p-8 rounded-2xl w-full max-w-md bg-white dark:bg-gray-900 dark:text-gray-100">
+      <div className="shadow-2xl p-8 rounded-2xl w-full max-w-md  dark:bg-gray-900 dark:text-gray-100">
         
         {/* Title */}
         <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-red-400 bg-clip-text text-transparent text-center mb-2">
@@ -126,7 +126,7 @@ export const LoginRegister = () => {
         {activeTab === "login" && (
           <form onSubmit={handleLogin}>
             <div className="mb-4">
-              <label className="block mb-1 font-medium">Email</label>
+              <label className="block mb-1 font-medium text-base-content">Email</label>
               <input
                 name="email"
                 type="email"
@@ -136,7 +136,7 @@ export const LoginRegister = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block mb-1 font-medium">Password</label>
+              <label className="block mb-1 font-medium text-base-content">Password</label>
               <input
                 name="password"
                 type="password"
