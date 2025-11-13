@@ -26,8 +26,8 @@ const HowItWorks = () => {
   return (
     <section className=" py-20 ">
       <div className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">How It Works</h2>
-        <p className="text-gray-500 mb-12">
+        <h2 className="text-3xl font-bold text-base-content mb-2">How It Works</h2>
+        <p className="text-base-content mb-12">
           Start trading globally in three simple steps
         </p>
 
@@ -40,14 +40,14 @@ const HowItWorks = () => {
               <h1 className="text-6xl font-extrabold text-orange-100 mb-4">
                 {step.number}
               </h1>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-lg font-semibold text-base-content mb-2">
                 {step.title}
               </h3>
-              <p className="text-gray-500 text-sm mb-4">{step.desc}</p>
+              <p className="text-base-content text-sm mb-4">{step.desc}</p>
 
               <ul className="text-left space-y-2">
                 {step.points.map((p, i) => (
-                  <li key={i} className="flex items-center gap-2 text-gray-700">
+                  <li key={i} className="flex items-center gap-2 text-base-content">
                     <FaCheckCircle className="text-green-500" /> {p}
                   </li>
                 ))}

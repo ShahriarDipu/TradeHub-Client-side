@@ -34,15 +34,16 @@ setTheme(checked? "night":"light")
 
 
  const links = <div className='flex flex-col md:flex-row gap-2 text-lg'>
-<li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-gray-700 hover:bg-orange-50 hover:text-orange-600'> <NavLink to="/">Home</NavLink></li> 
- <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-gray-700 hover:bg-orange-50 hover:text-orange-600'><NavLink to="AllProducts">All Products</NavLink></li> 
+<li 
+className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base-content hover:bg-orange-50 hover:text-orange-600'> <NavLink to="/">Home</NavLink></li> 
+ <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base-content hover:bg-orange-50 hover:text-orange-600'><NavLink to="AllProducts">All Products</NavLink></li> 
   
 {
   user && <>
-       <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-gray-700 hover:bg-orange-50 hover:text-orange-600'><NavLink to="AddExports"> Add Export</NavLink></li>
-      <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-gray-700 hover:bg-orange-50 hover:text-orange-600'><NavLink to="MyExports">My Exports</NavLink></li>
+       <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base-content hover:bg-orange-50 hover:text-orange-600'><NavLink to="AddExports"> Add Export</NavLink></li>
+      <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base-content hover:bg-orange-50 hover:text-orange-600'><NavLink to="MyExports">My Exports</NavLink></li>
 
-       <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-gray-700 hover:bg-orange-50 hover:text-orange-600'><NavLink to="MyImports">My Imports</NavLink></li>
+       <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base-content hover:bg-orange-50 hover:text-orange-600'><NavLink to="MyImports">My Imports</NavLink></li>
     
     </>
 }

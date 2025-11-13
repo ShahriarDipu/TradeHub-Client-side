@@ -29,7 +29,7 @@ const WhyChoose = () => {
     <section className="py-16  ">
       <div className="w-15/17 mx-auto text-center px-4">
         <h2 className="text-3xl font-bold mb-2">Why Choose TradeHub?</h2>
-        <p className="text-gray-500 mb-10">
+        <p className="text-base-content mb-10">
           Everything you need for successful global trade
         </p>
 
@@ -45,8 +45,8 @@ const WhyChoose = () => {
                   {f.icon}
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-start">{f.title}</h3>
-              <p className="text-gray-500 text-sm text-start">{f.desc}</p>
+              <h3 className="text-xl font-semibold mb-2 text-start text-base-content">{f.title}</h3>
+              <p className=" text-sm text-start text-base-content">{f.desc}</p>
             </div>
           ))}
         </div>
