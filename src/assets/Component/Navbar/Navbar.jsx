@@ -61,12 +61,7 @@ const handleSignOut=()=>{
   return (
     <div>
 
-<input
-onChange={(e)=>handleTheme(e.target.checked)}
-type="checkbox"
-defaultChecked={localStorage.getItem('theme')==="night"}
-className="toggle"
-/>
+
 
 
 
@@ -100,6 +95,14 @@ className="toggle"
     </ul>
   </div>
   <div className="navbar-end">
+
+    <input
+   
+onChange={(e)=>handleTheme(e.target.checked)}
+type="checkbox"
+defaultChecked={localStorage.getItem('theme')==="night"}
+className="toggle mr-4"
+/>
   {
     user ?  (
 
