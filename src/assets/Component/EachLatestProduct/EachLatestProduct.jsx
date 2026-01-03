@@ -18,7 +18,7 @@ export const EachLatestProduct = ({eachLatestProduct}) => {
         <img
           src={image}
           alt={title}
-          className="w-full h-90 object-cover"
+          className="w-full h-70 object-cover"
         />
 
         {/* Quantity Badge */}

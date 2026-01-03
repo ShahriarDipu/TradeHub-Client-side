@@ -1,21 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { FaStar, FaMapMarkerAlt, FaTrashAlt } from "react-icons/fa";
 import toast from "react-hot-toast";
+import { AuthContext } from "../../../Context/AuthContext";
 
 
 export const MyImports = () => {
+  const { user } = use(AuthContext);
   const [imports, setImports] = useState([]);
   const [deleteId, setDeleteId] = useState(null); // for modal
   const navigate = useNavigate();
 
   //  Fetch ALL imports from database
   useEffect(() => {
-    fetch("https://assignment-10-server-six-ivory.vercel.app/imports")
+if(!user?.email) return
+
+    fetch(`https://assignment-10-server-six-ivory.vercel.app/imports?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setImports(data.reverse()))
       .catch((err) => console.error("Error fetching imports:", err));
-  }, []);
+  }, [user?.email]);
 
   // Handle delete confirm
   const handleConfirmDelete = () => {
@@ -50,7 +54,7 @@ export const MyImports = () => {
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-full h-90 object-cover"
+                className="w-full h-70 object-cover"
               />
 
               <span className="absolute top-3 left-3 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">

@@ -11,7 +11,7 @@ export const LatestProducts = ({latestProductsPromise}) => {
           <h1 className='text-3xl font-bold'>Latest Products</h1>
           <p className='text-xl mt-5 '>Discover the newest additions to our global marketplace</p>
         </div>
-<div className='w-15/17 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-15 p-4'>
+<div className='w-15/17  mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4'>
 
     {
         latestProducts.map(eachLatestProduct=>(

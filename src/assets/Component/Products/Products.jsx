@@ -16,7 +16,7 @@ export const Products = ({Products}) => {
           <img
             src={image}
             alt={title}
-            className="w-full h-90 object-cover"
+            className="w-full h-60 object-cover"
           />
   
      

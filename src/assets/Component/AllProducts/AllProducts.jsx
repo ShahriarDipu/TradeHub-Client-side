@@ -38,7 +38,7 @@ console.log(allProducts)
 
   return (
     <div className="p-6 py-15">
-      <h1 className="text-2xl font-bold mb-6  text-center">All Products</h1>
+      <h1 className="text-2xl font-bold mb-6  text-center">Explore All Products</h1>
 
 
       <div className="flex justify-center mb-15">
@@ -53,7 +53,7 @@ console.log(allProducts)
       </div>
 
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-15 w-15/17 mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-15/17 mx-auto">
         {filteredProducts.length > 0 ? (///if filter matched any len
           filteredProducts.map((product) => (
             <Products key={product._id} Products={product} />
