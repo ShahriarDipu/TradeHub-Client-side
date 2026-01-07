@@ -53,11 +53,21 @@ useEffect(()=>{
  }
 
 },[])
+
+
+const updateUserProfile = ({ displayName, photoURL }) => {
+  return updateProfile(auth.currentUser, {
+    displayName,
+    photoURL,
+  });
+};
+
     const authInfo ={
         createUser,
         signInUser,
         loading,
        user,
+        updateUserProfile,
        signInWithGoogle,
        signOutWithGoogle
     }

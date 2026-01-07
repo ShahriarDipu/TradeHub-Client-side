@@ -1,7 +1,9 @@
 import React from "react";
+import { BsBoxSeam } from "react-icons/bs";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaGithub, FaXTwitter } from "react-icons/fa6";
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
@@ -11,25 +13,23 @@ const Footer = () => {
         {/* Brand Section */}
         <div>
           <div className="flex items-center mb-3">
-            <div className="bg-orange-500 text-white p-2 rounded-lg text-2xl font-bold mr-2">
-              <span>📦</span>
-            </div>
+           <div className="w-10 hidden md:flex mr-2 h-10 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <BsBoxSeam className='text-white  text-2xl'/>
+                           </div> 
             <h2 className="text-xl font-semibold text-white">TradeHub</h2>
           </div>
           <p className="text-sm mb-4">
             Your trusted global marketplace for import and export solutions.
           </p>
           <div className="flex space-x-3">
-            <a href="#" className="bg-gray-700 hover:bg-orange-500 p-2 rounded-full transition">
-              <FaFacebookF />
-            </a>
-            <a href="#" className="bg-gray-700 hover:bg-orange-500 p-2 rounded-full transition">
+           
+            <a href="https://x.com/Shahriar__Dipu" className="bg-gray-700 hover:bg-orange-500 p-2 rounded-full transition">
               <FaXTwitter />
             </a>
-            <a href="#" className="bg-gray-700 hover:bg-orange-500 p-2 rounded-full transition">
-              <FaInstagram />
+            <a href="https://github.com/ShahriarDipu" className="bg-gray-700 hover:bg-orange-500 p-2 rounded-full transition">
+            <FaGithub></FaGithub>
             </a>
-            <a href="#" className="bg-gray-700 hover:bg-orange-500 p-2 rounded-full transition">
+            <a href="https://www.linkedin.com/in/shahriar-ahmed-dipu" className="bg-gray-700 hover:bg-orange-500 p-2 rounded-full transition">
               <FaLinkedinIn />
             </a>
           </div>
@@ -39,10 +39,10 @@ const Footer = () => {
         <div>
           <h3 className="text-white font-semibold mb-4">Quick Links</h3>
           <ul className="space-y-2 text-sm">
-            <li><a href="#" className="hover:text-orange-400 transition">All Products</a></li>
-            <li><a href="#" className="hover:text-orange-400 transition">My Exports</a></li>
-            <li><a href="#" className="hover:text-orange-400 transition">My Imports</a></li>
-            <li><a href="#" className="hover:text-orange-400 transition">Add Product</a></li>
+            <li><a href="/allProducts" className="hover:text-orange-400 transition">All Products</a></li>
+            <li><Link to="/myExports"><a className="hover:text-orange-400 transition">My Exports</a></Link></li>
+            <li><Link to="/myImports"><a  className="hover:text-orange-400 transition">My Imports</a></Link></li>
+            <li><Link to="/AddExports"><a className="hover:text-orange-400 transition">Add Product</a></Link></li>
           </ul>
         </div>
 
@@ -63,15 +63,15 @@ const Footer = () => {
           <ul className="space-y-3 text-sm">
             <li className="flex items-center gap-2">
               <MdEmail className="text-orange-400 text-lg" />
-              info@tradehub.com
+              shahriardipuofficial@gmail.com
             </li>
             <li className="flex items-center gap-2">
               <MdPhone className="text-orange-400 text-lg" />
-              +1 (555) 123-4567
+              +1 (647) 679-0882
             </li>
             <li className="flex items-start gap-2">
               <MdLocationOn className="text-orange-400 text-lg mt-0.5" />
-              123 Trade Street, Commerce City, NY 10001
+              20 Jeanette street, Scarborough ,M1M 3G1
             </li>
           </ul>
         </div>

@@ -12,20 +12,21 @@ export const EachLatestProduct = ({eachLatestProduct}) => {
   return (
       <div >
     
-     <div className=" rounded-2xl shadow-2xl hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden ">
+     <div className="dark:bg-gray-800 rounded-2xl shadow-2xl hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden ">
       {/* Image Section */}
-      <div className="relative">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-70 object-cover"
-        />
-
-        {/* Quantity Badge */}
-        <span className="absolute top-3 left-3 bg-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
-          <FaBoxOpen className="inline mr-1" /> {available_quantity} left
-        </span>
-      </div>
+      <div className="relative w-80 mx-auto pt-2" >
+               <img
+                 src={image}
+                 alt={title}
+                 className="w-full h-60 object-cover rounded"
+               />
+       
+          
+               <span className="absolute top-3 left-3 bg-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+                 <FaBoxOpen className="inline mr-1" /> {available_quantity} left
+               </span>
+             </div>
+       
 
       {/* Details Section */}
       <div className="p-4">

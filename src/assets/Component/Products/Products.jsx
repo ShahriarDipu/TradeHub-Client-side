@@ -5,18 +5,18 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import ProductDetails from '../ProductDetails/ProductDetails';
 import { NavLink } from 'react-router';
 export const Products = ({Products}) => {
-    const { _id, image, title, price, origin_country, rating, available_quantity } = Products;
+    const { _id, image, title, price, origin_country, rating, available_quantity, description } = Products;
 
    
     
   return (
    <div className=" rounded-2xl shadow-2xl hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden">
       
-        <div className="relative">
+        <div className="relative w-80 mx-auto pt-2" >
           <img
             src={image}
             alt={title}
-            className="w-full h-60 object-cover"
+            className="w-full h-60 object-cover rounded"
           />
   
      

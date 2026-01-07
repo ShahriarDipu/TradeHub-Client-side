@@ -15,6 +15,11 @@ import PrivateRoute from './assets/Route/PrivateRoute.jsx';
 import ProductDetails from './assets/Component/ProductDetails/ProductDetails.jsx';
 import AddExport from './assets/Component/AddExports/AddExport.jsx';
 import { ThemeProvider } from 'next-themes'
+import Dashboard from './assets/Component/Dashboard/Dashboard.jsx';
+import DashboardView from './assets/Component/DashboardView/DashboardView.jsx';
+import Profile from './assets/Component/Profile/Profile.jsx';
+import About from './assets/Component/About/About.jsx';
+import Contact from './assets/Component/Contuct/Contact.jsx';
 
 
 const router = createBrowserRouter([
@@ -30,6 +35,15 @@ const router = createBrowserRouter([
         path:'AllProducts',
         Component:AllProducts
       },
+      {
+path:"/About",
+Component:About
+      },
+      {
+        path:"/Contact",
+        Component:Contact
+      },
+
       {
         path:"LoginRegister",
         Component:LoginRegister
@@ -56,7 +70,41 @@ const router = createBrowserRouter([
       
   
      ]
+
   },
+ {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+       Component:DashboardView,
+      },
+      {
+        path: "MyExports",
+        Component:MyExports
+      },
+      {
+        path: "AddImports",
+       Component:MyImports
+      },
+      {
+        path: "AddExports",
+        Component:AddExport,
+      },
+     
+    ],
+  },
+  {
+     
+        path:"profile",
+        Component:Profile
+      
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(

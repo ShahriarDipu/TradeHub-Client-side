@@ -20,12 +20,12 @@ const ProductDetails = () => {
   }, [id]);
 
   if (!product) {
-    return <p className="text-center mt-10 text-gray-500">Loading...</p>;
+    return <p className="text-center my-10 text-gray-500"><span className="loading loading-infinity loading-xl"></span></p>;
   }
 
-  const { _id, image, title, price, origin_country, rating, available_quantity } = product;
+  const { _id, image, title, price, origin_country, rating, available_quantity,description } = product;
 
-  // ✅ Handle Import Submit
+ 
   const handleImport = () => {
     const importData = {
       product_id: _id,
@@ -59,25 +59,25 @@ const ProductDetails = () => {
   };
 
   return (
-    <div className="min-h-screen  flex flex-col items-center px-4 py-10">
+    <div className="min-h-screen  flex flex-col items-center px-4 py-10 ">
       <div className="w-full max-w-6xl mb-6">
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-2 text-gray-700 hover:text-orange-600 font-medium transition"
+          className="flex items-center gap-2 text-gray-700 hover:text-orange-600  dark:text-gray-300 font-medium transition"
         >
           <FaArrowLeft /> Back
         </button>
       </div>
 
-      <div className="max-w-6xl w-full  backdrop-blur-sm rounded-3xl shadow-lg grid grid-cols-1 md:grid-cols-2 gap-10 p-8 md:p-10">
+      <div className="max-w-6xl dark:bg-gray-800 w-full  backdrop-blur-sm rounded-3xl shadow-xl grid grid-cols-1 md:grid-cols-2 gap-10 p-8 md:p-10">
         {/* Image */}
         <div className="relative">
           <img
             src={image}
             alt={title}
-            className="rounded-2xl w-full h-[500px] object-cover shadow-md"
+            className="rounded-2xl  w-full h-[500px] object-cover shadow-md border border-gray-100"
           />
-          <span className="absolute top-3 right-3 bg-white text-gray-800 text-sm font-semibold px-3 py-1 rounded-full shadow">
+          <span className="absolute top-3 right-3 bg-white dark:bg-gray-200 text-gray-800 text-sm font-semibold px-3 py-1 rounded-full shadow">
             ⭐ {rating}
           </span>
         </div>
@@ -85,29 +85,29 @@ const ProductDetails = () => {
         {/* Details */}
         <div className="flex flex-col justify-between">
           <div>
-            <h1 className="text-3xl font-bold mb-2">{title}</h1>
+            <h1 className="text-3xl font-bold mb-2 dark:text-gray-300">{title}</h1>
             <p className="text-gray-500 flex items-center gap-1 mb-4">
-              <FaMapMarkerAlt className="text-orange-500" /> {origin_country}
+              <FaMapMarkerAlt className="text-orange-500 dark:text-gray-300" /> {origin_country}
             </p>
 
-            <p className="text-3xl font-bold text-orange-600 mb-6">${price}</p>
+            <p className="text-3xl font-bold text-orange-600 mb-6 dark:text-gray-300 ">${price}</p>
 
-            <div className="flex items-center justify-between bg-orange-50/40 rounded-xl px-4 py-3 mb-6">
+            <div className="flex items-center justify-between bg-orange-50/40  dark:bg-gray-900 rounded-xl px-4 py-3 mb-6">
               <div className="flex items-center gap-2">
                 <FaBoxOpen className="text-orange-500 text-lg" />
-                <p className="font-semibold text-gray-700">Availability:</p>
+                <p className="font-semibold text-gray-700 dark:text-gray-300">Availability:</p>
               </div>
               <div className="text-right">
-                <p className="text-green-600 font-semibold">In Stock</p>
-                <p className="text-sm font-semibold text-gray-700">
+                <p className="text-green-600 font-semibold dark:text-orange-500">In Stock</p>
+                <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
                   {available_quantity} units
                 </p>
               </div>
             </div>
 
             <h3 className="text-lg font-semibold mb-2">Description</h3>
-            <p className="text-gray-600 leading-relaxed">
-              This is the description of the product.
+            <p className="text-gray-600 leading-relaxed dark:text-gray-400">
+            {description}
             </p>
           </div>
 
@@ -119,12 +119,12 @@ const ProductDetails = () => {
             <FiShoppingCart className="text-lg" /> Import Now
           </button>
           <div className="mt-8 border-t pt-4 text-lg text-gray-900 grid grid-cols-2 gap-y-2">
-            <p className="text-gray-600">Rating:</p>
-            <p className="font-semibold">{rating} / 5</p>
-            <p className="text-gray-600">Origin:</p>
-            <p className="font-semibold capitalize">{origin_country}</p>
-            <p className="text-gray-600">Price per unit:</p>
-            <p className="font-semibold">${price}</p>
+            <p className="text-gray-600 dark:text-gray-300">Rating:</p>
+            <p className="font-semibold dark:text-gray-300">{rating} / 5</p>
+            <p className="text-gray-600 dark:text-gray-300" >Origin:</p>
+            <p className="font-semibold capitalize dark:text-gray-300">{origin_country}</p>
+            <p className="text-gray-600 dark:text-gray-300">Price per unit:</p>
+            <p className="font-semibold dark:text-gray-300">${price}</p>
           </div>
         </div>
       </div>
@@ -133,65 +133,83 @@ const ProductDetails = () => {
 
 
       {/* ✅ Import Modal */}
-      {showModal && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl shadow-xl p-6 w-[90%] max-w-md">
-            <h2 className="text-xl font-semibold flex items-center gap-2 mb-2">
-              <FaBoxOpen className="text-orange-500" /> Import Product
-            </h2>
-            <p className="text-gray-500 text-sm mb-4">
-              Enter the quantity you want to import for <b>{title}</b>
-            </p>
+     {showModal && (
+  <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+    <div
+      className="bg-white dark:bg-gray-800
+                 text-gray-900 dark:text-gray-200
+                 rounded-2xl shadow-xl p-6 w-[90%] max-w-md"
+    >
+      <h2 className="text-xl font-semibold flex items-center gap-2 mb-2">
+        <FaBoxOpen className="text-orange-500" /> Import Product
+      </h2>
 
-            {/* Quantity Input */}
-            <label className="text-sm font-medium">Quantity</label>
-            <input
-              type="number"
-              min="1"
-              value={quantity}
-              onChange={(e) => setQuantity(Number(e.target.value))}
-              className="border rounded-lg w-full p-2 mt-1 mb-1 focus:outline-none focus:ring-2 focus:ring-orange-400"
-            />
-            <p className="text-gray-500 text-sm mb-4">
-              Available: {available_quantity} units
-            </p>
+      <p className="text-gray-500 dark:text-gray-400 text-sm mb-4">
+        Enter the quantity you want to import for <b>{title}</b>
+      </p>
 
-            {/* Price Summary */}
-            <div className="bg-orange-50 p-3 rounded-lg text-sm mb-4">
-              <p>Price per unit: <b>${price}</b></p>
-              <p>Quantity: <b>{quantity}</b></p>
-              <hr className="my-2" />
-              <p>
-                Total:{" "}
-                <b className="text-orange-600">${(price * quantity).toFixed(2)}</b>
-              </p>
-            </div>
+      {/* Quantity Input */}
+      <label className="text-sm font-medium dark:text-gray-300">
+        Quantity
+      </label>
 
-            {/* Buttons */}
-            <div className="flex justify-end gap-3">
-              <button
-                onClick={() => setShowModal(false)}
-                className="border px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleImport}
-                disabled={quantity > available_quantity || quantity < 1}
-                className={`px-4 py-2 rounded-lg text-white font-semibold shadow transition ${
-                  quantity > available_quantity || quantity < 1
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-gradient-to-r from-orange-400 to-orange-600 hover:opacity-90"
-                }`}
-              >
-                Import Now
-              </button>
+      <input
+        type="number"
+        min="1"
+        value={quantity}
+        onChange={(e) => setQuantity(Number(e.target.value))}
+        className="border rounded-lg w-full p-2 mt-1 mb-1
+                   bg-white dark:bg-gray-800
+                   text-gray-900 dark:text-gray-200
+                   border-gray-300 dark:border-gray-600
+                   focus:outline-none focus:ring-2 focus:ring-orange-400"
+      />
 
-         
-            </div>
-          </div>
-        </div>
-      )}
+      <p className="text-gray-500 dark:text-gray-400 text-sm mb-4">
+        Available: {available_quantity} units
+      </p>
+
+      {/* Price Summary */}
+      <div className="bg-orange-50 dark:bg-gray-800 p-3 rounded-lg text-sm mb-4">
+        <p>Price per unit: <b>${price}</b></p>
+        <p>Quantity: <b>{quantity}</b></p>
+        <hr className="my-2 border-gray-200 dark:border-gray-700" />
+        <p>
+          Total:{" "}
+          <b className="text-orange-600">
+            ${(price * quantity).toFixed(2)}
+          </b>
+        </p>
+      </div>
+
+      {/* Buttons */}
+      <div className="flex justify-end gap-3">
+        <button
+          onClick={() => setShowModal(false)}
+          className="border px-4 py-2 rounded-lg
+                     text-gray-700 dark:text-gray-300
+                     border-gray-300 dark:border-gray-600
+                     hover:bg-gray-100 dark:hover:bg-gray-800"
+        >
+          Cancel
+        </button>
+
+        <button
+          onClick={handleImport}
+          disabled={quantity > available_quantity || quantity < 1}
+          className={`px-4 py-2 rounded-lg text-white font-semibold shadow transition ${
+            quantity > available_quantity || quantity < 1
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-gradient-to-r from-orange-400 to-orange-600 hover:opacity-90"
+          }`}
+        >
+          Import Now
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };

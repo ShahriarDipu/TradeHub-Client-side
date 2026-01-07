@@ -3,9 +3,20 @@ import { Link, NavLink } from 'react-router'
 import { BsBoxSeam } from "react-icons/bs";
 import { LuLogOut } from "react-icons/lu";
 import { LuLogIn } from "react-icons/lu";
+import { Sun, Moon } from "lucide-react";
+
+import {
+  FiGrid,
+  FiBox,
+  FiDownload,
+  FiPlusCircle,
+  FiUser,
+  FiLogOut
+} from "react-icons/fi";
 
 import '../../../App.css';
 import { AuthContext } from '../../../Context/AuthContext';
+import DarkModeToggle from '../DarkModeToggle';
 const Navbar = () => {
  const [theme, setTheme]=useState(localStorage.getItem('theme')||"light")
 
@@ -28,12 +39,13 @@ setTheme(checked? "night":"light")
 
 
 
- const links = <div className='flex flex-col md:flex-row gap-2 text-lg '>
+ const links = <div className='flex flex-col md:flex-row  text-lg '>
 <li 
 className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base-content hover:bg-orange-50 hover:text-orange-600'> <NavLink to="/">Home</NavLink></li> 
  <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base-content hover:bg-orange-50 hover:text-orange-600'><NavLink to="AllProducts">All Products</NavLink></li> 
-  
-{
+   <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base-content hover:bg-orange-50 hover:text-orange-600'><NavLink to="/About">About Us</NavLink></li> 
+     <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base-content hover:bg-orange-50 hover:text-orange-600'><NavLink to="/Contact">Contact Us</NavLink></li>
+{/* {
   user && <>
        <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base-content hover:bg-orange-50 hover:text-orange-600'><NavLink to="AddExports"> Add Export</NavLink></li>
       <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base-content hover:bg-orange-50 hover:text-orange-600'><NavLink to="MyExports">My Exports</NavLink></li>
@@ -41,7 +53,7 @@ className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-bas
        <li className='px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base-content hover:bg-orange-50 hover:text-orange-600'><NavLink to="MyImports">My Imports</NavLink></li>
     
     </>
-}
+} */}
  </div>
 
 
@@ -92,27 +104,70 @@ const handleSignOut=()=>{
   </div>
   <div className="navbar-end">
 
-    <input
-   
-onChange={(e)=>handleTheme(e.target.checked)}
-type="checkbox"
-defaultChecked={localStorage.getItem('theme')==="night"}
-className="toggle mr-4"
-/>
+ <button
+  onClick={() =>
+    handleTheme(localStorage.getItem("theme") !== "night")
+  }
+  aria-label="Toggle theme"
+  className="mr-4 p-2 rounded-lg transition
+             hover:bg-orange-100 dark:hover:bg-gray-700"
+>
+  {localStorage.getItem("theme") === "night" ? (
+    <Moon className="w-5 h-5 text-orange-400" />
+  ) : (
+    <Sun className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+  )}
+</button>
+
+
   {
     user ?  (
 
         <>
 
         {user.photoURL && (
+             
+  <div className="dropdown dropdown-end">
+      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+        <div className="w-10 rounded-full">
+             
               <img
                 src={user.photoURL}
                 alt="User"
                 className="w-10 h-10 mr-2 rounded-full border-2 border-orange-500"
               />
+            
+        </div>
+      </div>
+      <ul
+        tabIndex="-1"
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+       <div className="mt-4">
+        <p className="text-xs text-gray-400 font-semibold mb-2 px-2">
+          TRADING
+        </p>
+    <Link to="/dashboard" >
+        <li>       <a href="" className='text-sm'> <FiGrid className='text-xl'/>Dashboard </a>     </li>
+        </Link>
+      </div>
+        <div className="my-4">
+        <p className="text-xs text-gray-400 font-semibold mb-2 px-2">
+          ACCOUNT
+        </p>
+
+       <Link to="/profile"><li >      <a href="" className='text-sm'> <FiUser  className='text-xl' />Profile Settings</a>     </li>
+        </Link> 
+      </div>
+        
+        <li>
+  <a   onClick={handleSignOut} className="btn"> <LuLogOut />Sign Out</a> 
+
+        </li>
+      </ul>
+    </div>
             )}
           
-         <a   onClick={handleSignOut} className="btn"> <LuLogOut />Sign Out</a> 
+       
 
          </>
     )
@@ -133,6 +188,8 @@ className="toggle mr-4"
     {/* <NavLink to="LoginRegister">Login/Register</NavLink> */}
   </div>
 </div>
+
+
     </div>
 
   )
